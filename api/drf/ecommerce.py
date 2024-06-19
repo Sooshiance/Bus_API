@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+import requests
 
 
 app = Flask(__name__)
@@ -7,7 +8,11 @@ app = Flask(__name__)
 # TODO : If owner wants to check which product is not in the store
 @app.route('active-product/', methods=['GET'])
 def getActiveProduct():
-    pass
+    data = requests.get("http://127.0.0.1:8000/api/")
+
+    jdata = data.json()
+
+    return jsonify(jdata)
 
 
 # TODO : If owner wants to check his daily transactions
